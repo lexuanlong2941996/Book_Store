@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="57eb53bd356e4d33aaff6df6ec6263e7" Name="Diagram1">
+        <EntityTypeShape EntityType="BookStore_RecoveredModel.AnonymousUser" Width="1.5" PointX="10" PointY="14.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStore_RecoveredModel.Author" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStore_RecoveredModel.Category" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStore_RecoveredModel.Order" Width="1.5" PointX="12.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStore_RecoveredModel.OrderDetail" Width="1.5" PointX="5.25" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStore_RecoveredModel.Product" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStore_RecoveredModel.ProductDetail" Width="1.5" PointX="8.25" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStore_RecoveredModel.ProductImage" Width="1.5" PointX="5.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStore_RecoveredModel.Publisher" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStore_RecoveredModel.Role" Width="1.5" PointX="7.75" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStore_RecoveredModel.sysdiagram" Width="1.5" PointX="8.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BookStore_RecoveredModel.User" Width="1.5" PointX="10" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="BookStore_RecoveredModel.C_FK_dbo_Order_dbo_AnonymousUser_AnonymousUserId" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStore_RecoveredModel.C_FK_dbo_ProductDetail_dbo_Author_AuthorId" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStore_RecoveredModel.C_FK_dbo_Product_dbo_Category_CategoryId" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStore_RecoveredModel.C_FK_dbo_Order_dbo_User_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStore_RecoveredModel.C_FK_dbo_OrderDetail_dbo_Product_ProductId" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStore_RecoveredModel.C_FK_dbo_Product_dbo_Publisher_PublisherId" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStore_RecoveredModel.C_FK_dbo_ProductDetail_dbo_Product_ProductId" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStore_RecoveredModel.C_FK_dbo_ProductImage_dbo_Product_ProductId" ManuallyRouted="false" />
+        <AssociationConnector Association="BookStore_RecoveredModel.C_FK_dbo_User_dbo_Role_RoleId" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,253 @@
+﻿<head>
+    <link href="~/Content/css/Header.css" rel="stylesheet">
+</head>
+<header id="header">
+    <!--header-->
+    <div class="header-bottom sticky-navbar">
+        <!--header-bottom-->
+        <div class="container logo-container">
+
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-1">
+                    <a href=@Url.Action("Index", "Home")>
+                        <img src="~/Content/images/home/logo.png" style="width:100px;height:40px
+" />
+                    </a>
+                </div>
+                <div class="col-lg-3">
+                    <div class="mainmenu pull-left">
+                        <ul class="nav navbar-nav collapse navbar-collapse">
+                            @*<li>@Html.ActionLink("Trang chủ", "Index", "Home")</li>*@
+                            <li>@Html.ActionLink("Sản phẩm", "Index", "Search")</li>
+                            <li>@Html.ActionLink("Liên hệ", "Index", "Contact")</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="search_box">
+                        <input id="search_box" type="search" placeholder="Tìm kiếm"
+                               onkeypress="onKeypressSearch(event)" />
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="shop-menu pull-left">
+                        <ul class="nav navbar-nav">
+                            <li class="dropdown-cart">
+                                <a class="dropbtn shopping-cart" href=@Url.Action("Index", "Cart")>
+                                    <img src="~/Content/images/home/shopping-cart.png" style="width:35px;height:35px" /> GIỎ HÀNG
+                                </a>
+                                <div class="dropdown-content">
+                                    <table class="table table-fixed-preview">
+                                        <thead>
+                                            <tr class="cart_menu">
+                                                <th class="description col-xs-5">Sản phẩm</th>
+                                                <th class="price col-xs-1" style="text-align:center">Giá</th>
+                                                <th class="quantity col-xs-3" style="margin-left:10px">Số lượng</th>
+                                                <th class="total col-xs-2">Tổng</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="cart-body-prv"></tbody>
+                                    </table>
+                                </div>
+                            <li>
+                                <a class="login-button" href=@Url.Action("Login", "Staff")>
+                                    <img src="~/Content/images/home/login.png" style="width:32px;height:32px" />USER
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="container logo-container">
+
+        </div>
+
+    </div><!--/header-bottom-->
+</header><!--/header-->
+
+<script src="~/Content/js/jquery.js" type="text/javascript"></script>
+
+
+<script>
+    $(document).ready(function () {
+        //getCart("preview");
+    })
+
+    function getCart(viewType) {
+        $.ajax({
+            url: '/Cart/GetCart',
+            type: 'GET',
+            dataType: 'json',
+            data: { "id": null },
+            success: function (data) {
+                populateOrderDetails(data.OrderDetails, viewType);
+            },
+            error: function (err) {
+                alert(err.responseJSON);
+                document.write(err.responseText);
+            }
+        })
+    }
+
+    function populateOrderDetails(data, viewType) {
+        var rows = '';
+        var iurl;
+        if (viewType == "preview") {
+            $.each(data, function (i, item) {
+
+                if (item.Product.AvatarImage) {
+                    iurl = item.Product.AvatarImage.replace("~", "");
+                }
+                else {
+                    iurl = "/Content/images/home/default-image.png"
+                }
+                if (item.Quantity == 0) {
+                    return true;
+                }
+                rows += '<tr style="height:57px">'
+                rows += '                                 <td class="cart_description col-xs-5"> <img style="vertical-align:middle;float:left;max-height:50px;max-width:50px;object-fit:contain;margin-right:4px" onerror="' + "if (this.src != '/Content/images/home/default-image.png') this.src = '/Content/images/home/default-image.png';" + '" src="' + iurl + '" width="40px" height="40px"></a>'
+                rows += '                                     <h4 style="margin:0"><a href="/Products/Single?id=' + item.Product.ID + '" class="shorten-name" style="background-color:transparent;color:#0fb3bc; font-weight:bold;white-space: pre-wrap;margin:0">' + item.Product.Name + '</a></h4>'
+                rows += '                                   </td>'
+                rows += '                                   <td class="cart_price col-xs-1" style="line-height:57px;padding:0">'
+                rows += '                                       <p style="margin:0;text-align:center" >' + (item.Product.Price / 1000).toLocaleString() + 'k</p>'
+                rows += '                                   </td>'
+                rows += '                                  <td class="cart_quantity col-xs-3" style="margin-right:-10px">'
+                rows += '                                     <div class="cart_quantity_button"> <p hidden>' + item.ProductId + '</p>'
+                rows += '                                        <a style="height:20px" class="cart_quantity_up" href="">+</a>'
+                rows += '                                       <input style="height:28px" class="cart_quantity_input_prv" type="text" name="quantity" readonly value="' + item.Quantity + '" autocomplete="off" size="2">'
+                rows += '                                      <a style="height:20px" class="cart_quantity_down" href="">-</a>'
+                rows += '                                 </div>'
+                rows += '                            </td>'
+                rows += '                           <td class="cart_total col-xs-2" style="line-height:57px;padding:0">'
+                rows += '                              <p style="margin:0;text-align:center" class="cart_total_price">' + (item.TotalAmount / 1000).toLocaleString() + 'k</p>'
+                rows += '                         </td>'
+                rows += '                        <td class="cart_delete" style="padding-right:0"><p hidden>' + item.ProductId + '</p>'
+                rows += '                           <a class="cart_quantity_delete" style="background-color:transparent" href=""><i class="fa fa-times"></i></a>'
+                rows += '                      </td>'
+                rows += '                 </tr>';
+            });
+            $(".cart-body-prv").html(rows);
+        }
+        else if (viewType == "main") {
+            $.each(data, function (i, item) {
+                if (item.Product.AvatarImage) {
+                    iurl = item.Product.AvatarImage.replace("~", "");
+                }
+                else {
+                    iurl = "/Content/images/home/default-image.png"
+                }
+                if (item.Quantity == 0) {
+                    return true;
+                }
+                rows += '<tr>'
+                rows += '              <td class="cart_description col-lg-5"> <a href="/Products/Single?id=' + item.Product.ID + '"><img style="float:left" onerror="' + "if (this.src != '/Content/images/home/default-image.png') this.src = '/Content/images/home/default-image.png';" + '" src="' + iurl + '" width="60px" height="60px"></a>'
+                rows += '                  <h4><a style="margin-left:5px" href="/Products/Single?id=' + item.Product.ID + '">' + item.Product.Name + '</a></h4>'
+                rows += '             <p><text style="margin-left:5px">Mã hàng: ' + item.Product.ID + '</text></p>'
+                rows += '         </td>'
+                rows += '         <td class="cart_price col-lg-2" style="text-align:center">'
+                rows += '             <p style="margin:0">' + (item.Product.Price / 1000).toLocaleString() + 'k</p>'
+                rows += '         </td>'
+                rows += '         <td class="cart_quantity col-lg-2">'
+                rows += '             <div class="cart_quantity_button"> <p hidden>' + item.ProductId + '</p>'
+                rows += '                 <a style="height:23px" class="cart_quantity_up" href="">+</a>'
+                rows += '                 <input style="height:23px" class="cart_quantity_input" type="text" name="quantity" readonly value="' + item.Quantity + '" autocomplete="off" size="2">'
+                rows += '                 <a style="height:23px" class="cart_quantity_down" href="">-</a>'
+                rows += '             </div>'
+                rows += '         </td>'
+                rows += '         <td class="cart_total col-lg-2" style="text-align:center">'
+                rows += '             <p style="margin:0" class="cart_total_price">' + (item.TotalAmount / 1000).toLocaleString() + 'k</p>'
+                rows += '         </td>'
+                rows += '         <td class="cart_delete"> <p hidden>' + item.ProductId + '</p>'
+                rows += '             <a class="cart_quantity_delete" href=""><i class="fa fa-times"></i></a>'
+                rows += '         </td>'
+                rows += '     </tr>'
+            });
+            $(".cart-body").html(rows);
+        }
+
+    }
+    $(".cart-body-prv").on("click", "tr>td>div>.cart_quantity_up", function (event) {
+        event.preventDefault();
+        var productID = $(this).parent().children('p').text();
+        updateCart("add", productID, event)
+    });
+
+    $(".cart-body-prv").on("click", "tr>td>div>.cart_quantity_down", function (event) {
+        event.preventDefault();
+        var productID = $(this).parent().children('p').text();
+        updateCart("minus", productID, event)
+    });
+
+    $(".cart-body-prv").on("click", "tr>td>.cart_quantity_delete", function (event) {
+        event.preventDefault();
+        var productID = $(this).parent().children('p').text();
+        updateCart("delete", productID, event)
+    });
+
+
+    function updateCart(action, productID, event) {
+        event.preventDefault();
+        var actionurl = ''
+
+        switch (action) {
+            case "add":
+                actionurl = '/Cart/AddProduct'
+                break;
+            case "minus":
+                actionurl = '/Cart/MinusProduct'
+                break;
+            case "delete":
+                actionurl = '/Cart/DeleteProduct'
+                break;
+        }
+
+        $.ajax({
+            url: actionurl,
+            type: 'POST',
+            dataType: 'json',
+            data: { "id": productID },
+            success: function (data) {
+
+                if (!data.success) {
+                    alert(data.text);
+                }
+
+                getCart("preview");
+                getCart("main");
+            },
+            error: function (err) {
+                alert(err.responseJSON);
+                document.write(err.responseText);
+            }
+        })
+
+    }
+
+
+    @*$("#search_box").click(function () {
+
+        var currentpage = '@HttpContext.Current.Request.RequestContext.RouteData.Values["controller"].ToString()'
+        if (currentpage != 'Search') {
+            window.location.href = '@Url.Action("Index","Search")'
+        }
+
+    });*@
+    function onKeypressSearch(e) {
+        var keynum;
+
+        if (window.event) { // IE
+            keynum = e.keyCode;
+        } else if (e.which) { // Netscape/Firefox/Opera
+            keynum = e.which;
+        }
+
+        if (keynum == 13) {
+            onSearch();
+        }
+    }
+
+</script>
