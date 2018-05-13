@@ -9,7 +9,7 @@ namespace QuanLyBanSach.Controllers
 {
     public class CartController : Controller
     {
-        BookStore_RecoveredEntities1 db = new BookStore_RecoveredEntities1();
+        BookStore db = new BookStore();
 
 
         public ActionResult Index()

@@ -11,7 +11,7 @@ namespace QuanLyBanSach.Controllers
 {
     public class ProductsController : Controller
     {
-        BookStore_RecoveredEntities1 db = new BookStore_RecoveredEntities1();
+        BookStore db = new BookStore();
 
         public ActionResult Index()
         {

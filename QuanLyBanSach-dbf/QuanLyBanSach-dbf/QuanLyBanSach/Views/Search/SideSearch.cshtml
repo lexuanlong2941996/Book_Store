@@ -76,8 +76,8 @@
     });
     // lúc đầu show web
     $(document).ready(function () {
-        @*//listAuthors();
-        //listCategories();*@
+        //listAuthors();
+        //listCategories();
 
 
         $("#ddl_author").change(function () {
@@ -89,36 +89,36 @@
         //bindSlider();
     })
 
-    @*function listAuthors() {
-        $.ajax({
-            url: '/Products/DropdownAuthor',
-            type: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                populateStdDropdown(data, "ddl_author");
-            },
-            error: function (err) {
-                alert(err.responseJSON);
-                document.write(err.responseText);
-            }
-        })
-    }
+    //function listAuthors() {
+    //    $.ajax({
+    //        url: '/Products/DropdownAuthor',
+    //        type: 'GET',
+    //        dataType: 'json',
+    //        success: function (data) {
+    //            populateStdDropdown(data, "ddl_author");
+    //        },
+    //        error: function (err) {
+    //            alert(err.responseJSON);
+    //            document.write(err.responseText);
+    //        }
+    //    })
+    //}
 
 
-    function listCategories() {
-        $.ajax({
-            url: '/Products/DropdownCategory',
-            type: 'GET',
-            dataType: 'json',
-            success: function (data) {
-                populateStdDropdown(data, "ddl_category");
-            },
-            error: function (err) {
-                alert(err.responseJSON);
-                document.write(err.responseText);
-            }
-        })
-    }
+    //function listCategories() {
+    //    $.ajax({
+    //        url: '/Products/DropdownCategory',
+    //        type: 'GET',
+    //        dataType: 'json',
+    //        success: function (data) {
+    //            populateStdDropdown(data, "ddl_category");
+    //        },
+    //        error: function (err) {
+    //            alert(err.responseJSON);
+    //            document.write(err.responseText);
+    //        }
+    //    })
+    //}
 
     //function bindSlider() {
     //    var originalVal;
@@ -134,7 +134,7 @@
     // get value of radios
     //alert($("input:radio[name='gender']:checked").val() + ' ' +
     //    $("input:radio[name='nogender']:checked").val());
-    //}*@
+    //}
     $("#list-category").on("click", "li>a", function (event) {
         event.preventDefault();
 
