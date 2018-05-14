@@ -11,7 +11,7 @@ namespace QuanLyBanSach.Controllers
 {
     public class ProductsController : Controller
     {
-        BookStore_RecoveredEntities1 db = new BookStore_RecoveredEntities1();
+        BookStore db = new BookStore();
 
         public ActionResult Index()
         {
@@ -69,121 +69,121 @@ namespace QuanLyBanSach.Controllers
         }
 
 
-        //[HttpGet]
-        //public ActionResult DropDownProduct()
-        //{
-        //    var dict = db.Products.ToDictionary(pro => pro.ID, pro => pro.Name);
+        [HttpGet]
+        public ActionResult DropDownProduct()
+        {
+            var dict = db.Products.ToDictionary(pro => pro.ID, pro => pro.Name);
 
-        //    var list = dict.ToList();
+            var list = dict.ToList();
 
-        //    return Json(list, JsonRequestBehavior.AllowGet);
-        //}
-
-
-        //[HttpGet]
-        //public ActionResult GetProduct(int id, int depth)
-        //{
-        //    var productYour = db.Products.Find(id);
-        //    if (productYour == null)
-        //    {
-        //        return null;
-        //    }
-
-        //    var result = new JsonNetResult
-        //    {
-        //        Data = productYour,
-        //        JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-        //        Settings = {
-        //            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-        //            MaxDepth = depth
-        //        }
-        //    };
-        //    return result;
-        //}
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
 
 
-        //[HttpGet]
-        //public ActionResult GetProducts()
-        //{
-        //    var result = new JsonNetResult
-        //    {
-        //        Data = db.Products.ToList(),
-        //        JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-        //        Settings = {
-        //            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-        //            MaxDepth = 2
-        //        }
-        //    };
+        [HttpGet]
+        public ActionResult GetProduct(int id, int depth)
+        {
+            var productYour = db.Products.Find(id);
+            if (productYour == null)
+            {
+                return null;
+            }
 
-        //    return result;
-        //}
+            var result = new JsonNetResult
+            {
+                Data = productYour,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+                Settings = {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                    MaxDepth = depth
+                }
+            };
+            return result;
+        }
 
 
-        //[HttpPost]
-        //public ActionResult FilterProductByCategory(int categoryId)
-        //{
-        //    IQueryable<Product> products;
-        //    if (categoryId == -1)
-        //    {
-        //        products = db.Products;
-        //    }
-        //    else
-        //    {
-        //        products = from child in db.Products
-        //                   where (child.CategoryId == categoryId)
-        //                   select child;
-        //    }
+        [HttpGet]
+        public ActionResult GetProducts()
+        {
+            var result = new JsonNetResult
+            {
+                Data = db.Products.ToList(),
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+                Settings = {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                    MaxDepth = 2
+                }
+            };
 
-        //    var result = new JsonNetResult
-        //    {
-        //        Data = products.ToList(),
-        //        JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-        //        Settings = {
-        //            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-        //            MaxDepth = 2
-        //        }
-        //    };
+            return result;
+        }
 
-        //    return result;
-        //}
 
-        //[HttpPost]
-        //public ActionResult FilterProductByPublisher(int publisherId)
-        //{
-        //    IQueryable<Product> products;
-        //    if (publisherId == -1)
-        //    {
-        //        products = db.Products;
-        //    }
-        //    else
-        //    {
-        //        products = from child in db.Products
-        //                   where (child.PublisherId == publisherId)
-        //                   select child;
-        //    }
+        [HttpPost]
+        public ActionResult FilterProductByCategory(int categoryId)
+        {
+            IQueryable<Product> products;
+            if (categoryId == -1)
+            {
+                products = db.Products;
+            }
+            else
+            {
+                products = from child in db.Products
+                           where (child.CategoryId == categoryId)
+                           select child;
+            }
 
-        //    var result = new JsonNetResult
-        //    {
-        //        Data = products.ToList(),
-        //        JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-        //        Settings = {
-        //            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-        //            MaxDepth = 2
-        //        }
-        //    };
+            var result = new JsonNetResult
+            {
+                Data = products.ToList(),
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+                Settings = {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                    MaxDepth = 2
+                }
+            };
 
-        //    return result;
-        //}
+            return result;
+        }
 
-        //[HttpGet]
-        //public ActionResult DropdownCategory()
-        //{
-        //    var dict = db.Categories.ToDictionary(cate => cate.ID, cate => cate.Name);
+        [HttpPost]
+        public ActionResult FilterProductByPublisher(int publisherId)
+        {
+            IQueryable<Product> products;
+            if (publisherId == -1)
+            {
+                products = db.Products;
+            }
+            else
+            {
+                products = from child in db.Products
+                           where (child.PublisherId == publisherId)
+                           select child;
+            }
 
-        //    var list = dict.ToList();
+            var result = new JsonNetResult
+            {
+                Data = products.ToList(),
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+                Settings = {
+                    ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                    MaxDepth = 2
+                }
+            };
 
-        //    return Json(list, JsonRequestBehavior.AllowGet);
-        //}
+            return result;
+        }
+
+        [HttpGet]
+        public ActionResult DropdownCategory()
+        {
+            var dict = db.Categories.ToDictionary(cate => cate.ID, cate => cate.Name);
+
+            var list = dict.ToList();
+
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
 
 
         //[HttpPost]

@@ -8,11 +8,11 @@ namespace QuanLyBanSach.Controllers
 {
     public class HomeController : Controller
     {
-        private BookStore_RecoveredEntities1 db = new BookStore_RecoveredEntities1();
+        private BookStore db = new BookStore();
         public ActionResult Index()
         {
             ViewData["Authors"] = db.Authors.ToList();
-            ViewData["Categories"] = db.Authors.ToList();
+            ViewData["Categories"] = db.Categories.ToList();
             return View();
         }
 

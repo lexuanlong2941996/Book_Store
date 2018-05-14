@@ -13,10 +13,10 @@ namespace QuanLyBanSach
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BookStore_RecoveredEntities1 : DbContext
+    public partial class BookStore : DbContext
     {
-        public BookStore_RecoveredEntities1()
-            : base("name=BookStore_RecoveredEntities1")
+        public BookStore()
+            : base("name=BookStore")
         {
         }
     

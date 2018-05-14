@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BookStore_RecoveredModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="BookStore_Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="AnonymousUser">
           <Key>
             <PropertyRef Name="ID" />
@@ -256,7 +256,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BookStore_RecoveredModelStoreContainer">
+        <EntityContainer Name="BookStore_ModelStoreContainer">
           <EntitySet Name="AnonymousUser" EntityType="Self.AnonymousUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
@@ -310,7 +310,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="BookStore_RecoveredModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="BookStore_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="AnonymousUser">
           <Key>
             <PropertyRef Name="ID" />
@@ -580,7 +580,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BookStore_RecoveredEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BookStore" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AnonymousUsers" EntityType="Self.AnonymousUser" />
           <EntitySet Name="Authors" EntityType="Self.Author" />
           <EntitySet Name="Categories" EntityType="Self.Category" />
@@ -635,9 +635,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BookStore_RecoveredModelStoreContainer" CdmEntityContainer="BookStore_RecoveredEntities1">
+        <EntityContainerMapping StorageEntityContainer="BookStore_ModelStoreContainer" CdmEntityContainer="BookStore">
           <EntitySetMapping Name="AnonymousUsers">
-            <EntityTypeMapping TypeName="BookStore_RecoveredModel.AnonymousUser">
+            <EntityTypeMapping TypeName="BookStore_Model.AnonymousUser">
               <MappingFragment StoreEntitySet="AnonymousUser">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -651,7 +651,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Authors">
-            <EntityTypeMapping TypeName="BookStore_RecoveredModel.Author">
+            <EntityTypeMapping TypeName="BookStore_Model.Author">
               <MappingFragment StoreEntitySet="Author">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -663,7 +663,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="BookStore_RecoveredModel.Category">
+            <EntityTypeMapping TypeName="BookStore_Model.Category">
               <MappingFragment StoreEntitySet="Category">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -675,7 +675,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="BookStore_RecoveredModel.Order">
+            <EntityTypeMapping TypeName="BookStore_Model.Order">
               <MappingFragment StoreEntitySet="Order">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
@@ -691,7 +691,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderDetails">
-            <EntityTypeMapping TypeName="BookStore_RecoveredModel.OrderDetail">
+            <EntityTypeMapping TypeName="BookStore_Model.OrderDetail">
               <MappingFragment StoreEntitySet="OrderDetail">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
@@ -703,7 +703,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="BookStore_RecoveredModel.Product">
+            <EntityTypeMapping TypeName="BookStore_Model.Product">
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -721,7 +721,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductDetails">
-            <EntityTypeMapping TypeName="BookStore_RecoveredModel.ProductDetail">
+            <EntityTypeMapping TypeName="BookStore_Model.ProductDetail">
               <MappingFragment StoreEntitySet="ProductDetail">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -731,7 +731,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductImages">
-            <EntityTypeMapping TypeName="BookStore_RecoveredModel.ProductImage">
+            <EntityTypeMapping TypeName="BookStore_Model.ProductImage">
               <MappingFragment StoreEntitySet="ProductImage">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -741,7 +741,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Publishers">
-            <EntityTypeMapping TypeName="BookStore_RecoveredModel.Publisher">
+            <EntityTypeMapping TypeName="BookStore_Model.Publisher">
               <MappingFragment StoreEntitySet="Publisher">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -754,7 +754,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="BookStore_RecoveredModel.Role">
+            <EntityTypeMapping TypeName="BookStore_Model.Role">
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -764,7 +764,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="BookStore_RecoveredModel.sysdiagram">
+            <EntityTypeMapping TypeName="BookStore_Model.sysdiagram">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -775,7 +775,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="BookStore_RecoveredModel.User">
+            <EntityTypeMapping TypeName="BookStore_Model.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
