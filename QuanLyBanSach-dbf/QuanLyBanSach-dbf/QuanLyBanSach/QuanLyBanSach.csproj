@@ -283,12 +283,10 @@
     <Content Include="Content\css\input-image.css" />
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\libs\prettyPhoto.css" />
-    <Content Include="Content\css\libs\price-range.css" />
     <Content Include="Content\css\responsive.css" />
     <Content Include="Content\css\libs\sb-admin-2.min.css" />
     <Content Include="Content\css\scrolltable.css" />
     <Content Include="Content\css\libs\toast.css" />
-    <Content Include="Content\fonts\font-awesome\HELP-US-OUT.txt" />
     <Content Include="Content\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\images\home\ad-image.jpg" />
     <Content Include="Content\images\home\bg_border.png" />
@@ -319,6 +317,7 @@
     <Content Include="Content\images\home\slider7.jpg" />
     <Content Include="Content\images\home\slider8.jpg" />
     <Content Include="Content\images\logo.png" />
+    <Content Include="Content\js\functions.js" />
     <Content Include="Content\js\others\helper-2.js" />
     <Content Include="Content\js\helper.js" />
     <Content Include="favicon.ico" />
@@ -360,7 +359,6 @@
     <Content Include="Content\js\others\modernizr-2.6.2.js" />
     <Content Include="Content\js\others\moment.js" />
     <Content Include="Content\js\others\moment.min.js" />
-    <Content Include="Content\js\others\price-range.js" />
     <Content Include="Content\js\others\respond.js" />
     <Content Include="Content\js\others\respond.min.js" />
     <Content Include="Content\js\others\sb-admin-2.js" />
@@ -382,7 +380,6 @@
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Shared\SideMenu.cshtml" />
     <Content Include="Views\Search\Index.cshtml" />
-    <Content Include="Views\Search\SideSearch.cshtml" />
     <Content Include="Views\Products\Category.cshtml" />
     <Content Include="Views\Products\Single.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
@@ -390,10 +387,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\fonts\font-awesome\css\" />
-    <Folder Include="Content\fonts\font-awesome\fonts\" />
-    <Folder Include="Content\fonts\font-awesome\less\" />
-    <Folder Include="Content\fonts\font-awesome\scss\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\fonts\glyphicons-halflings-regular.woff" />
