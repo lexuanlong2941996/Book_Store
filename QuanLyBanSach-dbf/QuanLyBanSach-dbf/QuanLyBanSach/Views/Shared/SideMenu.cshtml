@@ -60,19 +60,17 @@
 
 
 
-<script src="~/Content/js/jquery/jquery.js" type="text/javascript"></script>
-<link href="~/Content/css/libs/price-range.css" rel="stylesheet">
 <link href="~/Content/css/bootstrap/bootstrap.min.css" rel="stylesheet">
 <link href="~/Content/css/bootstrap/bootstrap-select.min.css" rel="stylesheet">
 
-<script src="~/Content/js/others/price-range.js"></script>
+<script src="~/Content/js/jquery/jquery.js" type="text/javascript"></script>
 <script src="~/Content/js/bootstrap/bootstrap-select.min.js"></script>
 <script src="~/Content/js/helper.js"></script>
 
 <script>
     // lúc đầu show web
     $(document).ready(function () {
-        
+
         $("#ddl_author").change(function () {
             onSearch();
         });
@@ -80,7 +78,7 @@
             onSearch();
         });
     })
-    
+
     $("#list-category").on("click", "li>a", function (event) {
         event.preventDefault();
 

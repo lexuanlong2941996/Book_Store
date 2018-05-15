@@ -90,8 +90,9 @@ namespace QuanLyBanSach.Controllers
                 }
                 catch (Exception)
                 {
-                    return Json("Azure không cho: products = tmp.AsQueryable()", JsonRequestBehavior.AllowGet);
+                    return Json("Error at tmp.AsQueryable()", JsonRequestBehavior.AllowGet);
                 }
+
             }
 
             if (categoryId != null)
