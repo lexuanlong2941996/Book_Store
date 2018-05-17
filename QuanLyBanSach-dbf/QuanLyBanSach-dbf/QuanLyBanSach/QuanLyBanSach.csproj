@@ -255,6 +255,15 @@
     <Compile Include="Role.cs">
       <DependentUpon>BookStore.tt</DependentUpon>
     </Compile>
+    <Compile Include="sp_FilterByAuthorID_Result.cs">
+      <DependentUpon>BookStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>BookStore.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sp_helpdiagrams_Result.cs">
+      <DependentUpon>BookStore.tt</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="sysdiagram.cs">
       <DependentUpon>BookStore.tt</DependentUpon>
