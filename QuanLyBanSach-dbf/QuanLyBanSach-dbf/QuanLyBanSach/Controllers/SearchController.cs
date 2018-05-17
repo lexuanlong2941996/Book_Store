@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Web.Mvc;
 using Newtonsoft.Json;
@@ -55,38 +56,39 @@ namespace QuanLyBanSach.Controllers
             {
                 costEnd *= 1000;
             }
-            IQueryable<Product> products;
+            List<Product> products;
             if (!string.IsNullOrEmpty(key))
             {
-                products = db.Products.Where(p => p.Name.Contains(key));
+                products = db.Products.Where(p => p.Name.Contains(key)).ToList();
             }
             else
             {
-                products = db.Products;
+                products = db.Products.ToList();
             }
 
             if (authorId != null)
             {
-                List<Product> tmp = products.ToList();
-                List<Product> tmp2 = new List<Product>(tmp);
-                foreach (var singleProduct in tmp2)
-                {
-                    var details = singleProduct.ProductDetails;
-                    if (details != null)
-                    {
-                        var found = details.Where(pd => pd.AuthorId == authorId);
-                        if (found == null || found.Count() == 0)
-                        {
-                            tmp.Remove(singleProduct);
-                        }
-                    }
-                }
-                if (tmp.Count == 0)
-                    return Json(tmp, JsonRequestBehavior.AllowGet);
+                //List<Product> tmp = products.ToList();
+                //List<Product> tmp2 = new List<Product>(tmp);
+                //foreach (var singleProduct in tmp2)
+                //{
+                //    var details = singleProduct.ProductDetails;
+                //    if (details != null)
+                //    {
+                //        var found = details.Where(pd => pd.AuthorId == authorId);
+                //        if (found == null || found.Count() == 0)
+                //        {
+                //            tmp.Remove(singleProduct);
+                //        }
+                //    }
+                //}
+                //if (tmp.Count == 0)
+                //    return Json(tmp, JsonRequestBehavior.AllowGet);
 
                 try
                 {
-                    products = tmp.AsQueryable();
+                    //products = tmp.AsQueryable();
+                    products = db.sp_FilterByAuthorID(authorId).ToList();
                 }
                 catch (Exception)
                 {
@@ -97,7 +99,7 @@ namespace QuanLyBanSach.Controllers
 
             if (categoryId != null)
             {
-                products = products.Where(p => p.CategoryId == categoryId);
+                products = products.Where(p => p.CategoryId == categoryId).ToList();
 
                 if (products.Count() == 0)
                     return Json(new List<Product>(), JsonRequestBehavior.AllowGet);
@@ -105,13 +107,13 @@ namespace QuanLyBanSach.Controllers
 
             if (costBegin != null)
             {
-                products = products.Where(p => p.Price >= costBegin);
+                products = products.Where(p => p.Price >= costBegin).ToList();
                 if (products.Count() == 0)
                     return Json(new List<Product>(), JsonRequestBehavior.AllowGet);
             }
             if (costEnd != null)
             {
-                products = products.Where(p => p.Price <= costEnd);
+                products = products.Where(p => p.Price <= costEnd).ToList();
                 if (products.Count() == 0)
                     return Json(new List<Product>(), JsonRequestBehavior.AllowGet);
             }
@@ -121,9 +123,9 @@ namespace QuanLyBanSach.Controllers
                 Data = products.ToList(),
                 JsonRequestBehavior = JsonRequestBehavior.AllowGet,
                 Settings = {
-            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
-            MaxDepth = 3// product, productdetail, author
-                }
+                ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+                MaxDepth = 3// product, productdetail, author
+                    }
             };
             return result;
         }
