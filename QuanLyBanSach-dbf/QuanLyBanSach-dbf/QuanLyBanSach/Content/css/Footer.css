@@ -1,0 +1,107 @@
+﻿@import "~/Content/css/Site.css";
+
+body {
+    background: #f8f6f0;
+    color: #333333;
+    font-size: 15px;
+    font-weight: 300;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
+}
+.ma-footer-static .footer-static .footer-static-title, .footer-static-content ul li {
+    border-color: gray;
+    color: black;
+}
+.ma-footer-static .footer-static .footer-static-title {
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+}
+.footer-static-title {
+    padding-left: 10px;
+}
+.f-col-7 .footer-static-content ul li {
+    clear: both;
+    display: inline-block;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    padding-left: 10px;
+}
+.footer-static-content ul li a {
+    line-height: 40px;
+    padding-left: 20px;
+    color: black;
+}
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+ul, ol {
+    margin: 0;
+    padding: 0;
+}
+.footer-static-content ul li a:hover {
+    background-position: 0px -40px;
+    padding-left: 25px;
+    color: #ea7696;
+}
+li {
+    display: list-item;
+    text-align: -webkit-match-parent;
+}
+a {
+    color: #adadad;
+    text-decoration: none;
+    transition: all 300ms ease-in 0s;
+}
+ul, menu, dir {
+    display: block;
+    list-style-type: disc;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-start: 40px;
+}
+.fa {
+    display: inline-block;
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.footer-static-content ul li .fa {
+    float: left;
+    font-size: 16px;
+    color: #7b7b7b;
+    margin-right: 15px;
+    padding-left: 5px;
+    height: 34px;
+    width: 32px;
+    line-height: 32px;
+    text-align: center;
+    border: 2px solid #7b7b7b;
+}
+div {
+    display: block;
+}
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    position: relative;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px;
+}
+.footer-static-content ul li {
+    border-bottom: 2px solid #393939;
+}
+.ma-footer-static .footer-static .footer-static-title, .footer-static-content ul li {
+    border-color: gray;
+    color: black;
+}
